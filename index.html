@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Goals Tracker</title>
+    <link rel="icon" href="static/icon.png">
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="style/history.css">
+    <link rel="stylesheet" href="style/stats.css">
+    <link rel="stylesheet" href="style/style.css">
+
+</head>
+<body>
+
+<div class="app">
+    <div>
+        <h1 class="sp_title">My Weekly Goals</h1>
+        <h6>No need to be a hero, just be what most people aren't.</h6>
+    </div>
+    <nav>
+        <div>
+            <input type="radio" name="section" id="home" checked>
+            <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l1.5 1.5L7 5"/><line x1="10" y1="6" x2="21" y2="6"/><path d="M3 12l1.5 1.5L7 11"/><line x1="10" y1="12" x2="21" y2="12"/><path d="M3 18l1.5 1.5L7 17"/><line x1="10" y1="18" x2="21" y2="18"/></svg> Home</p>
+        </div>
+        <div>
+            <input type="radio" name="section" id="history">
+            <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="14" x2="7" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="17" y1="14" x2="17" y2="14"/><line x1="7" y1="18" x2="7" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/></svg> History</p>
+        </div>
+        <div>
+            <input type="radio" name="section" id="stats">
+            <p><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><rect x="6" y="13" width="3" height="8"/><rect x="12" y="9" width="3" height="12"/><rect x="18" y="5" width="3" height="16"/></svg> Stats</p>
+        </div>
+    </nav>
+    <main>
+        <section id="home" class="page active">
+            <div class="container currentWeekGoals">
+                <header>
+                    <div>
+                        <h3 class="sp_title week_title">Week <span id="currentWeekNumber"></span> Goals</h3>
+                        <h6 id="todays_date_indicator"></h6>
+                    </div>
+                    <div class="days" id="days_tracker">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                    </div>
+                </header>
+                <div class="progress">
+                    <p>0%</p>
+                    <div class="bar">
+                        <span id="progress_bar"></span>
+                    </div>
+                </div>
+                <ul id="goals_container">
+                    <li class="goal">
+                        <div>
+                            <input type="checkbox" name="goal" checked>
+                            <label for="goal">Goal-1</label>
+                        </div>
+                        <div class="level">
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="container nextWeekContainer">
+                <header><h3 class="sp_title">Next Week Goals</h3><h6>add goals for the next week - week <span id="nextWeekNumber"></span></h6></header>
+                <div><input type="text" id="nextWeekInput" placeholder="one-off goals (e.g finish project)..."><button id="nextWeekSubmit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+            </div>
+            <div class="container nextWeekContainer">
+                <header><h3 class="sp_title">Repeated Goals</h3><h6>these goals repeat automatically every week.</h6></header>
+                <div><input type="text" id="constantGoalsInput" placeholder="repetitive goals (e.g leg day)..."><button  id="constantGoalsSubmit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+            </div>
+            <div class="container nextWeekContainer">
+                <header><h3 class="sp_title">Add for Current Week</h3><h6>Forgot? New tasks came up? add from here.</h6></header>
+                <div><input type="text" id="currentWeekInput" placeholder="emergent goals (e.g attend lecture)..."><button  id="currentWeekGoalsSubmit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+            </div>
+        </section>
+
+        <section id="history" class="page inactive">
+            <div id="nextWeek_container">
+                <div class="container history-week" id="nextWeekContainer">
+                    <div class="week-header" id="nweek_header">
+                        <div class="week-info">
+                            <h3 class="sp_title">Next Week Goals</h3>
+                            <h6 id="nextWeekKey"></h6>
+                        </div><div class="week-stats">
+                            <p>waiting</p>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="week-details awaiting" id="nweek_details">
+                        <ul class="history-goals" id="nextWeekGoalsUl"></ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="history-list" id="history_container">
+            </div>
+        </section>
+
+        <section id="stats"  class="page inactive">
+            <div class="stats">
+                <div class="stat">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 5"/><polyline points="15 5 21 5 21 11"/></svg></div>
+                    <div>
+                        <h4 id="total_weeks">0</h4>
+                        <h6>Total Weeks recorded</h6>
+                    </div>
+                </div>
+                    <div class="stat">
+                        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="4" x2="5" y2="20"/><line x1="9" y1="4" x2="9" y2="20"/><line x1="13" y1="4" x2="13" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/><line x1="3" y1="18" x2="19" y2="6"/></svg></div>
+                        <div>
+                            <h4 id="total_goals">0</h4>
+                            <h6>Total Goals Achieved</h6>
+                        </div>
+                </div>
+                    <div class="stat">
+                        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V7a2 2 0 0 1 4 0"/><path d="M12 11V6a2 2 0 0 1 4 0v5"/><path d="M16 11V8a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-2a2 2 0 0 1 4 0"/></svg></div>
+                        <div>
+                            <h4 id="descipline_rate">0%</h4>
+                            <h6>Descipline Rate</h6>
+                        </div>
+                </div>
+                    <div class="stat">
+                        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+                        <div>
+                            <h4 id="average_goals">0</h4>
+                            <h6>Average Goals Per Week</h6>
+                        </div>
+                </div>
+
+            </div>
+            <div class="container chart">
+                <div class="bars" id="chart_bars">
+                    <div class="bar">
+                        <span data-count="5" data-index="1"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="script/main.js"></script>
+</body>
+</html>
